@@ -22,37 +22,38 @@
 // 07. На главной странице отобразите значение state login внутри тега <p></p>.
 // 08. Настройте редирект со всех несуществующих страниц на главную страницу.
 
-//Eng
-/*
-//Eng
-// 01. Set up the router according to this structure:
-// src/
-// ├── components/
-// │   ├── Header.jsx            // Navigation menu with Link/NavLink
-// │   ├── Footer.jsx            // Footer of the page
-// ├── pages/
-// │   ├── HomePage.jsx          // Main page
-// │   ├── AboutPage.jsx         // Static "About Us" page
-// │   ├── ProductsPage.jsx      // Page with a list of products
-// │   ├── ProductDetails.jsx    // Page with detailed product information
-// │   ├── SearchPage.jsx        // Search page with query string usage
-// │   ├── LoginPage.jsx         // Example of redirect on login
-// │   └── NotFoundPage.jsx      // 404 error page
-// ├── App.jsx                   // Root component with <Router> and routing
-// ├── data/
-//     └── products.jsx          // Mock data for products
+import {BrowserRouter, createBrowserRouter, RouterProvider, Routes} from "react-router-dom";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import ProductsPage from "./pages/ProductsPage.jsx";
+import ProductDetails from "./pages/ProductDetails.jsx";
+import SearchPage from "./pages/SearchPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
+import {Layout} from "./components/Layout.jsx";
 
-// 02. Create links to the pages in the Header component and place it on all pages in any convenient way.
-// 03. Set up the path to the ProductDetails page dynamically. Display the parameter from the path on the current page.
-// 04. Refer to the query string task in the searchPage.jsx component.
-// 05. In the LoginPage component, configure the "Log in" button using <Link></Link> to redirect the user to the main page and pass a state object {login: "You are logged in"}.
-// 06. In the LoginPage component, programmatically configure the "Forgot login" button to redirect the user to the main page and pass a state object {login: "You are not logged in"}.
-// 07. On the main page, display the value of the login state inside a <p></p> tag.
-// 08. Set up a redirect from all non-existent pages to the main page.
-*/
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout/>,
+    children: [
+      {index: true, element: <HomePage/>},
+      {path: 'about', element: <AboutPage/>},
+      {path: 'products', element: <ProductsPage/>},
+      {path: 'products/:productId', element: <ProductDetails/>},
+      {path: 'search', element: <SearchPage/>},
+      {path: 'login', element: <LoginPage/>},
+      {path: '*', element: <NotFoundPage/>},
+    ]
+  }
+])
 
 function App() {
-  return <div></div>;
+  return <RouterProvider router={router} />
+
+
 }
 
 export default App;
