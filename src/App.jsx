@@ -32,16 +32,12 @@ import ProductDetails from "./pages/ProductDetails.jsx";
 import SearchPage from "./pages/SearchPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
+import {Layout} from "./components/Layout.jsx";
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-        <>
-          <Header/>
-          <Footer/>
-        </>
-    ),
+    element: <Layout/>,
     children: [
       {index: true, element: <HomePage/>},
       {path: 'about', element: <AboutPage/>},

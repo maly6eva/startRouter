@@ -1,9 +1,6 @@
 //Rus
 // 01. Пропишите в URL путь /searchpage?q=hello-world!
 
-
-
-
 import {useSearchParams} from "react-router-dom";
 
 function SearchPage() {
