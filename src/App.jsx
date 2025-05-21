@@ -22,7 +22,7 @@
 // 07. На главной странице отобразите значение state login внутри тега <p></p>.
 // 08. Настройте редирект со всех несуществующих страниц на главную страницу.
 
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {BrowserRouter, createBrowserRouter, RouterProvider, Routes} from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -55,7 +55,9 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  return <RouterProvider router={router}/>;
+  return <RouterProvider router={router} />
+
+
 }
 
 export default App;
